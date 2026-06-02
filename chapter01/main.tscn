@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dt313wg2imqoo"]
+
+[ext_resource type="Script" uid="uid://db5krrrlobsg2" path="res://chapter01/main.gd" id="1_wn5vv"]
+[ext_resource type="PackedScene" uid="uid://c85jfvhgsbwd1" path="res://chapter02/player.tscn" id="2_qqjev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1s1d"]
+size = Vector2(65, 50)
+
+[node name="Main" type="Node2D" unique_id=278394232]
+script = ExtResource("1_wn5vv")
+
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=1985297514]
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=1235753139]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=1451678083]
+position = Vector2(22.5, 15)
+shape = SubResource("RectangleShape2D_b1s1d")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=313505573]
+
+[node name="Player" parent="." unique_id=2051681279 instance=ExtResource("2_qqjev")]
