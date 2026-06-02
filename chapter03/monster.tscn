@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bd7pho8m64esa"]
+
+[ext_resource type="Texture2D" path="res://chapter03/monster.png" id="1_monsterTex"]
+[ext_resource type="Script" path="res://chapter03/monster.gd" id="2_monsterGd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shape"]
+size = Vector2(284, 286)
+
+[node name="Monster" type="CharacterBody2D"]
+script = ExtResource("2_monsterGd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_monsterTex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_shape")
