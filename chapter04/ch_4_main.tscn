@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c5fcm5jqvfclg"]
+
+[ext_resource type="Script" uid="uid://cqy2hk1bwwm1i" path="res://chapter04/ch_4_main.gd" id="1_tjas3"]
+[ext_resource type="PackedScene" uid="uid://b3iabdusxystk" path="res://chapter04/player.tscn" id="2_m6bda"]
+
+[node name="Ch4-main" type="Node2D" unique_id=51061149]
+script = ExtResource("1_tjas3")
+
+[node name="Player" parent="." unique_id=1516997432 instance=ExtResource("2_m6bda")]
+position = Vector2(165, 165)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=883644560]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=859523579]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1968392656]
