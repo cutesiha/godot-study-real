@@ -3,19 +3,27 @@
 [ext_resource type="Script" uid="uid://cqy2hk1bwwm1i" path="res://chapter04/ch_4_main.gd" id="1_tjas3"]
 [ext_resource type="PackedScene" uid="uid://b3iabdusxystk" path="res://chapter04/player.tscn" id="2_m6bda"]
 [ext_resource type="Script" uid="uid://bjj5qf53kj1cl" path="res://chapter04/coin.gd" id="3_m6bda"]
+[ext_resource type="Texture2D" uid="uid://bc5j0fesr2bnd" path="res://chapter04/coin.png" id="4_7jx2k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8uay"]
+radius = 67.5
 
 [node name="Ch4-main" type="Node2D" unique_id=51061149]
 script = ExtResource("1_tjas3")
 
 [node name="Player" parent="." unique_id=1516997432 instance=ExtResource("2_m6bda")]
-position = Vector2(165, 165)
+position = Vector2(139, 456)
 
 [node name="Coin" type="Area2D" parent="." unique_id=1974975557]
+position = Vector2(594, 325)
 script = ExtResource("3_m6bda")
 
 [node name="Sprite2D" type="Sprite2D" parent="Coin" unique_id=1184673469]
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("4_7jx2k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=1306798558]
+shape = SubResource("CircleShape2D_q8uay")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=883644560]
 
