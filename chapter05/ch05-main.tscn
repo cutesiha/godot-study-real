@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d248v0ckgsrgq"]
+
+[ext_resource type="PackedScene" uid="uid://cwxrbm0eit37b" path="res://chapter05/ch05_main.tscn" id="1_q5c17"]
+
+[node name="ch05-main" unique_id=404633436 instance=ExtResource("1_q5c17")]

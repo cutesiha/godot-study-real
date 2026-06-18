@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dilh0c3n3c88h"]
+
+[ext_resource type="PackedScene" path="res://chapter06/player.tscn" id="1_player_scene"]
+[ext_resource type="PackedScene" path="res://chapter06/ball.tscn" id="2_ball_scene"]
+[ext_resource type="PackedScene" path="res://chapter06/coin.tscn" id="3_coin_scene"]
+[ext_resource type="Script" uid="uid://bo53dplulmfw2" path="res://chapter06/moving_platform.gd" id="4_platform_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(260, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1200, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_box"]
+size = Vector2(260, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(218, 306)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_left"]
+normal = Vector2(1, 0)
+distance = -40.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bottom"]
+distance = -720.0
+
+[node name="ch6-main" type="Node2D" unique_id=650042457]
+
+[node name="Player" parent="." unique_id=516304945 instance=ExtResource("1_player_scene")]
+position = Vector2(43, 219)
+
+[node name="Ball" parent="." unique_id=1187056905 instance=ExtResource("2_ball_scene")]
+position = Vector2(150, 203)
+
+[node name="FirstCoin" parent="." unique_id=170678916 instance=ExtResource("3_coin_scene")]
+position = Vector2(340, 88)
+
+[node name="FirstCoin" parent="FirstCoin" unique_id=835459548 instance=ExtResource("3_coin_scene")]
+position = Vector2(664, 33)
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="." unique_id=1261290313]
+position = Vector2(690, 414)
+script = ExtResource("4_platform_script")
+travel_distance = 180.0
+speed = 105.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform" unique_id=1594286153]
+position = Vector2(-166, -69)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Polygon2D" type="Polygon2D" parent="MovingPlatform" unique_id=1032464893]
+position = Vector2(-163, -67)
+color = Color(0.6440275, 0.1327165, 0.3941791, 1)
+polygon = PackedVector2Array(-130, -14, 53.268677, -14.000061, 130, -14, 130, 14, -130, 14)
+
+[node name="SecondCoin" parent="MovingPlatform" unique_id=529723117 instance=ExtResource("3_coin_scene")]
+position = Vector2(-175, -138)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1307170733]
+position = Vector2(550, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1541647501]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=1429769862]
+color = Color(1, 0.48317188, 0.66256404, 1)
+polygon = PackedVector2Array(-600, -32, 600, -32, 600, 32, -600, 32)
+
+[node name="HighBox" type="StaticBody2D" parent="." unique_id=1416244875]
+position = Vector2(105, 370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighBox" unique_id=2052687019]
+shape = SubResource("RectangleShape2D_left_box")
+
+[node name="Polygon2D" type="Polygon2D" parent="HighBox" unique_id=2115467371]
+color = Color(0.11247709, 8.468004e-06, 0.10919423, 1)
+polygon = PackedVector2Array(-130, -150, 130, -150, 130, 150, -130, 150)
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1870949272]
+position = Vector2(1010, 342)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=255782148]
+position = Vector2(3, 16)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="RightWall" unique_id=1592431817]
+position = Vector2(-81, 45)
+color = Color(0.15674868, 1.2772698e-05, 0.1488739, 1)
+polygon = PackedVector2Array(-27, -180, 193, -176, 202, 0, 198, 126, -23, 121)
+
+[node name="LeftLimit" type="StaticBody2D" parent="." unique_id=893962944]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLimit" unique_id=1892403406]
+shape = SubResource("WorldBoundaryShape2D_left")
+
+[node name="FallLimit" type="StaticBody2D" parent="." unique_id=220791621]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallLimit" unique_id=498385686]
+shape = SubResource("WorldBoundaryShape2D_bottom")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=182346278]
+position = Vector2(520, 315)
+zoom = Vector2(0.95, 0.95)

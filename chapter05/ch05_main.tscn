@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwxrbm0eit37b"]
+
+[ext_resource type="Script" uid="uid://dn70xrw167nm" path="res://chapter05/ch05_main.gd" id="1_main"]
+[ext_resource type="Texture2D" path="res://chapter05/player.png" id="2_player_texture"]
+[ext_resource type="Script" uid="uid://dewd4t6dvhvm1" path="res://chapter05/player.gd" id="3_player_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(70, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(640, 80)
+
+[node name="ch05_main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="JumpRebindButton" type="Button" parent="CanvasLayer"]
+offset_left = 919.0
+offset_top = 16.0
+offset_right = 1117.0
+offset_bottom = 56.0
+text = "점프키 변경"
+
+[node name="RebindLabel" type="Label" parent="CanvasLayer"]
+offset_left = 919.0
+offset_top = 64.0
+offset_right = 1135.0
+offset_bottom = 92.0
+text = "점프키: Space"
+
+[node name="GuideLabel" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 520.0
+offset_bottom = 128.0
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(400, 520)
+script = ExtResource("3_player_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(2, -153)
+texture = ExtResource("2_player_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -150)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(576, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor"]
+color = Color(0.231373, 0.278431, 0.32549, 1)
+polygon = PackedVector2Array(-320, -40, 320, -40, 320, 40, -320, 40)

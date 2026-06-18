@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://chapter06/ball.png" id="1_ball_texture"]
+[ext_resource type="Script" path="res://chapter06/ball.gd" id="2_ball_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ball"]
+radius = 17.0
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("2_ball_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("1_ball_texture")
+modulate = Color(0.2, 0.75, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ball")
